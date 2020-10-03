@@ -2,7 +2,7 @@
 
 This project is a fork of the [Derick Felix FCMB project](https://github.com/derickfelix/fcmb/releases), and the main contribution of this version is to source a little enhancement on the reader extraction process and some awareness about how NIST (The National Institute of Standards and Technology) tools work.
 
-The libs sourced by futronic are responsible for extracting biometric images to be processed by NIST tools that made a robust system to extract minutiae, generate templates, and compare biometric fingerprint.
+The libraries sourced by futronic are responsible for extracting biometric images that are used in NIST tools to extract minutiae, generate templates, and compare biometric fingerprint.
 
 Disclaimer: I'm not a specialist in this field.
 
@@ -140,7 +140,7 @@ raspberry:~/fcmb# tree
 
 #### Overall
 
-The demo was made with poor data using just my hands to illustrate how the process works and to show the ranking values. 
+The demo was made with poor data using just my fingers to illustrate how the process works and to show the ranking values. 
 
 | fingerprint | ranking |
 | --- | --- |
@@ -148,12 +148,12 @@ The demo was made with poor data using just my hands to illustrate how the proce
 | blue-finger (recaptured) | 36 (blue finger) / 7 (yellow finger) |
 | finger not recorded on dataset | 8 (blue finger) / 7 (yellow finger) |
 
-If I will choose a value bigger than 30 as the threshold, both fingers could be detected correctly. But it not seems to be a good strategy and I reckon that using more templates per finger or per user is a way to make threshold higher and to recognize with less uncertainty.
+If I will choose a value bigger than 30 as the threshold, both fingers could be detected correctly. But it not seems to be a good strategy and I reckon that using more templates per finger is a way to make threshold higher and to recognize with less uncertainty.
 
 
 ### Limitations
 
-Comparison is a time-consuming task and needs to be a concern when an application intends to have many users.
+Comparison is a time-consuming task and is a concern when an application intends to have many users.
 
 
 ## Acknowledge

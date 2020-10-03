@@ -28,7 +28,7 @@ Available in [release](https://github.com/carpajr/fcmb/releases)
 
 #### Source code
 
-```
+```bash
 git clone https://github.com/carpajr/fcmb
 cd fcmb
 make all 
@@ -47,18 +47,24 @@ make all
 When you run fcmb, the software executes:
 1. Using CWSQ, convert a bitmap in a WSQ file
 
-```exec/cwsq 2.25 wsq {{directory}}/{{name}}.bmp -raw_in 320,480,8```
+```bash
+exec/cwsq 2.25 wsq {{directory}}/{{name}}.bmp -raw_in 320,480,8
+```
 
 2. Using MINDTCT extracts minutiae of WSQ file
 
-```exec/mindtct {{directory}}/{{name}}.wsq {{directory}}/{{name}}```
+```bash
+exec/mindtct {{directory}}/{{name}}.wsq {{directory}}/{{name}}
+```
 
 
 #### Comparison process
 
 1. Comparing a person **1:1**
 
- ```exec/bozorth3 -T 40 -A outfmt=spg -p data/user.xyt data/Hamlet_fingerA3.xyt```
+```bash
+exec/bozorth3 -T 40 -A outfmt=spg -p data/user.xyt data/Hamlet_fingerA3.xyt
+```
 
 ```
 Expected result:
@@ -67,7 +73,9 @@ Expected result:
 
 2. Comparing a person with a dataset or **1:n**
 
-```exec/bozorth3 -T 40 -A outfmt=spg -p data/user.xyt data/*.xyt```
+```bash
+exec/bozorth3 -T 40 -A outfmt=spg -p data/user.xyt data/*.xyt
+```
 
 ```
 Expected result:
@@ -89,7 +97,7 @@ exec/bozorth3 --help
 
 It was created a directory called dataset in fcmb folder to store user data
 
-```
+```bash
 raspberry:~/fcmb# mkdir -p dataset/bmp
 raspberry:~/fcmb# tree
 .

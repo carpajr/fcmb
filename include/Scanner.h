@@ -79,6 +79,9 @@ public:
   ~Scanner();
 
   void ScanImage();
+  void SignalizeValidReading();
+  void SignalizeInValidReading();
+  void SleepThread(uint period, bool valid);
 private:
   void ShowError(unsigned long error);
   void WriteBmpFile(int width, int height);

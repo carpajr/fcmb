@@ -51,6 +51,30 @@ Scanner::~Scanner()
   if (m_Buffer != NULL) free(m_Buffer);
 }
 
+void Scanner::SignalizeValidReading() {
+    ftrScanSetDiodesStatus(m_Device, true, false); // green led ON, red led OFF
+}
+
+void Scanner::SignalizeInValidReading() {
+    ftrScanSetDiodesStatus(m_Device, false, true); // green led ON, red led OFF
+}
+
+void Scanner::SleepThread(uint period, bool valid) {
+    auto start = std::chrono::steady_clock::now(); 
+    auto duration = std::chrono::steady_clock::now() - start; 
+    
+    while(period > std::chrono::duration_cast<std::chrono::milliseconds>(duration).count()) {
+        duration = std::chrono::steady_clock::now() - start; 
+        
+        if(valid) {
+            SignalizeValidReading();
+        } else {
+            SignalizeInValidReading();
+        }
+    }
+    
+}
+
 void Scanner::ScanImage()
 {
 
@@ -66,24 +90,30 @@ void Scanner::ScanImage()
 
   std::cout << "Please put your finger on the scanner: " << std::endl;
 
+  auto l_fingerPresent = ftrScanIsFingerPresent(m_Device, NULL);
+
   while(true)
   {
-    ftrScanSetDiodesStatus(m_Device, (unsigned int)100/2, 0); // green led ON, red led OFF
-    if(ftrScanIsFingerPresent(m_Device, NULL)) break;
     // sleep
     #ifdef _WIN32
       Sleep(100);
     #else
-      std::this_thread::sleep_for(std::chrono::milliseconds(100));
+      SleepThread(100, false);
     #endif
+      if(l_fingerPresent) {
+	break;
+      }
+      l_fingerPresent = ftrScanIsFingerPresent(m_Device, NULL);
   }
 
   LOG("Capturing fingerprint...")
+
 
   if(ftrScanGetFrame(m_Device, m_Buffer, NULL))
   {
     LOG("Done\nWriting to file...")
     WriteBmpFile(m_ImageSize.nWidth, m_ImageSize.nHeight);
+    SleepThread(300, true);
   }
   else
   {
@@ -97,6 +127,11 @@ void Scanner::ScanImage()
     else
     {
       ShowError(error);
+      // in case of miss reading 
+      // Carlos 13/09/2020 - FS88H
+      if(error == FTR_ERROR_EMPTY_FRAME) {
+	    ScanImage();
+      }
     }
   }
 }

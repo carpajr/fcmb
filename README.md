@@ -35,7 +35,6 @@ make all
 
 ### Usage
 
-
 #### Minutiae extraction
 
 <code>fcmb &lt;directory&gt; &lt;name&gt;</code><br/>
@@ -85,14 +84,64 @@ Where:
 Consult other options using:
 exec/bozorth3 --help
 
-### Usage
-<code>fcmb &lt;directory&gt; &lt;name&gt;</code><br/>
+## Demo
 
-> From Derick Felix:
-> 
-> It will request a finger, then a bitmap image (name.bmp) and a minutiae map file (name.xyt) will be generated on the directory you informed so that you can visualize the finger scanned and use its minutiae with Bozorth3 according with your needs.
+It was created a directory called dataset in fcmb folder to store user data
+
+```
+raspberry:~/fcmb# mkdir -p dataset/bmp
+raspberry:~/fcmb# tree
+.
+├── bin
+│   └── main.cpp
+├── dataset
+│   ├── bmp
+├── exec
+
+│   ├── bozorth3
+│   ├── cwsq
+│   └── mindtct
+├── fcmb
+├── include
+│   ├── Cwsq.h
+│   ├── ftrScanAPI.h
+│   ├── Mindtct.h
+│   ├── Scanner.h
+│   ├── Scanner.h.1
+│   └── Utils.h
+├── lib
+│   ├── ftrScanAPI.a
+│   ├── ftrScanAPI.dll
+│   ├── ftrScanAPI.lib
+│   ├── libScanAPI_linux_arm.so
+│   ├── libScanAPI_linux_x86.so
+│   ├── libusb-0.1_linux_arm.so
+│   └── libusb-0.1_linux_x86.so
+├── LICENSE
+├── Makefile
+├── README.md
+└── src
+    ├── Cwsq.cpp
+    ├── Mindtct.cpp
+    ├── Scanner.cpp
+    ├── Scanner.cpp.1
+    └── Utils.cpp
+```
+
+### Extracting fingerprint biometry
+
+![Demo Extracting](https://github.com/carpajr/fcmb/blob/master/misc/extraction.gif)
+
+### Comparison
+
+![Demo Comparison](https://github.com/carpajr/fcmb/blob/master/misc/comparison.gif)
+
+### Limitations
+
+Comparison is a time-consuming task and needs to be a concern when an application intends to have many users.
+
 
 ## Acknowledge
-The credits are all to [Derick](https://github.com/derickfelix) to share the knowledge to integrates the fingerprint and free tools.
+The credits to [Derick](https://github.com/derickfelix) to share the knowledge to integrates the fingerprint and free tools.
 
 

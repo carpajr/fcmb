@@ -56,16 +56,18 @@ When you run fcmb, the software executes:
 
 #### Comparison process
 
-1. Comparing a person 1:1
- exec/bozorth3 -T 40 -A outfmt=spg -p data/user.xyt data/Hamlet_fingerA3.xyt
+1. Comparing a person **1:1**
+
+ ```exec/bozorth3 -T 40 -A outfmt=spg -p data/user.xyt data/Hamlet_fingerA3.xyt```
 
 ```
 Expected result:
 408 data/user.xyt data/Hamlet_finger_A3.xyt
 ```
 
-2. Comparing a person with a dataset or 1:n
-exec/bozorth3 -T 40 -A outfmt=spg -p data/user.xyt data/*.xyt
+2. Comparing a person with a dataset or **1:n**
+
+```exec/bozorth3 -T 40 -A outfmt=spg -p data/user.xyt data/*.xyt```
 
 ```
 Expected result:

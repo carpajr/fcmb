@@ -157,6 +157,6 @@ Comparison is a time-consuming task and is a concern when an application intends
 
 
 ## Acknowledge
-The credits to [Derick](https://github.com/derickfelix) to share the knowledge to integrates the fingerprint and free tools.
+Credits to [Derick](https://github.com/derickfelix) that shared the knowledge explored here.
 
 

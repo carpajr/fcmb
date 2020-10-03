@@ -4,6 +4,7 @@ This project is a fork of the [Derick Felix FCMB project](https://github.com/der
 
 The libs sourced by futronic are responsible for extracting biometric images to be processed by NIST tools that made a robust system to extract minutiae, generate templates, and compare biometric fingerprint.
 
+Disclaimer: I'm not a specialist in this field.
 
 ### Process to extract biometric data
 
@@ -135,6 +136,20 @@ raspberry:~/fcmb# tree
 ### Comparison
 
 ![Demo Comparison](https://github.com/carpajr/fcmb/blob/master/misc/comparison.gif)
+
+
+#### Overall
+
+The demo was made with poor data using just my hands to illustrate how the process works and to show the ranking values. 
+
+| fingerprint | ranking |
+| --- | --- |
+| yellow-finger (recaptured) | 30 (blue finger) / 91 (yellow finger) |
+| blue-finger (recaptured) | 36 (blue finger) / 7 (yellow finger) |
+| finger not recorded on dataset | 8 (blue finger) / 7 (yellow finger) |
+
+If I will choose a value bigger than 30 as the threshold, both fingers could be detected correctly. But it not seems to be a good strategy and I reckon that using more templates per finger or per user is a way to make threshold higher and to recognize with less uncertainty.
+
 
 ### Limitations
 
